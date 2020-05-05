@@ -1,17 +1,18 @@
 package com.example.controllers
 
-import com.example.*
-import java.util.Optional
-
+import com.example.NameDTO
+import com.example.Pet
+import com.example.repositories.PetRepository
 import io.micronaut.data.model.Pageable
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.validation.Validated
+import java.util.*
 
 
 @Validated
 @Controller("api/pets")
-open class PetController(private val petRepository: PetRepository) {
+class PetController(private val petRepository: PetRepository) {
 
     @Get("/")
     fun all(pageable: Pageable): List<NameDTO> {
