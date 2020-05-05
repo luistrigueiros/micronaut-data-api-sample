@@ -1,29 +1,16 @@
-package com.example
+package com.example.controllers
 
 import com.example.*
 import java.util.Optional
 
-import javax.validation.constraints.NotBlank
-
 import io.micronaut.data.model.Pageable
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.validation.Validated
 
-@Controller("/owners")
-open class OwnerController(private val ownerRepository: OwnerRepository) {
 
-    @Get("/")
-    fun all(): List<Owner> {
-        return ownerRepository.findAll()
-    }
-
-    @Get("/{name}")
-    open fun byName(@NotBlank name: String): Optional<Owner> {
-        return ownerRepository.findByName(name)
-    }
-}
-
-@Controller("/pets")
+@Validated
+@Controller("api/pets")
 open class PetController(private val petRepository: PetRepository) {
 
     @Get("/")
